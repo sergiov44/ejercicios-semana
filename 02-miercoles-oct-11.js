@@ -58,11 +58,11 @@ function calcularPromedioMujeres() {
 calcularPromedioMujeres();
 
 
-function encontrarNombresIguales(values){
+function encontrarNombresIguales(listaNombres){
     const nombresIguales = [];
 
-    for (let i = 0; i < values.length; i++) {
-        const nombre = values[i].name;
+    for (let i = 0; i < listaNombres.length; i++) {
+        const nombre = listaNombres[i].name;
         const encontrados = nombresIguales.find((elemento) => {
             return elemento.nombre == nombre;
         });
@@ -80,12 +80,10 @@ function encontrarNombresIguales(values){
     return nombresIguales;
 }
 
+const repetidos = encontrarNombresIguales( values );
 
-
-const nombresIguales = encontrarNombresIguales( values );
-
-// for( let i = 0; i < nombresIguales.length; i++ ) {
-//     if( nombresIguales[i].cantidad > 1 ) {
-//         console.log(`${nombresIguales[i].nombre} esta repetido ${nombresIguales[i].cantidad} veces`);
-//     }
-// }
+for( let i = 0; i < repetidos.length; i++ ) {
+    if( repetidos[i].cantidad > 1 ) {
+        console.log(`${repetidos[i].nombre} esta repetido ${repetidos[i].cantidad} veces`);
+    }
+}
