@@ -58,31 +58,34 @@ function calcularPromedioMujeres() {
 calcularPromedioMujeres();
 
 
+function encontrarNombresIguales(values){
+    const nombresIguales = [];
 
-
-
-const nombresIguales = [];
-let temp = values[0];
-
-for (let i = 0; i < values.length; i++) {
-    if(nombresIguales[i] == values[i].name) {
-        nombresIguales.push({name: i + 1});
+    for (let i = 0; i < values.length; i++) {
+        const nombre = values[i].name;
+        const encontrados = nombresIguales.find((elemento) => {
+            return elemento.nombre == nombre;
+        });
+        if(encontrados) {
+            encontrados.cantidad = encontrados.cantidad + 1;
+            
+        } else {
+            const persona = {
+                nombre,
+                cantidad: 1
+            };
+            nombresIguales.push(persona);
+        }
     }
+    return nombresIguales;
 }
-console.log( nombresIguales );
 
 
-// if( list == undefined || list.length == 0  ) {
-//     throw new Error( 'La lista esta vacia o esta indefinida' );
-// }
 
+const nombresIguales = encontrarNombresIguales( values );
 
-// let temp = list[ 0 ];
-
-// for( let i = 0; i < list.length; i++ ) {
-//     if( list[ i ] > temp ) {
-//         temp = list[ i ];
+// for( let i = 0; i < nombresIguales.length; i++ ) {
+//     if( nombresIguales[i].cantidad > 1 ) {
+//         console.log(`${nombresIguales[i].nombre} esta repetido ${nombresIguales[i].cantidad} veces`);
 //     }
 // }
-
-// return temp ;
